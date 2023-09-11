@@ -1,0 +1,340 @@
+{
+	"info": {
+		"_postman_id": "60f5a44d-b16c-42c7-9915-685efdafaf9e",
+		"name": "Store Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29559392",
+		"_collection_link": "https://planetary-space-469074.postman.co/workspace/Swagger-Pet-Store-API-Testing~dc29dded-5734-4bea-8e8f-f857e868bd1e/collection/29559392-60f5a44d-b16c-42c7-9915-685efdafaf9e?action=share&source=collection_link&creator=29559392"
+	},
+	"item": [
+		{
+			"name": "Create Order",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.value).to.eql();\r",
+							"});\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"console.log(\"Add log entries to your tests to document all steps in the console log .\");\r",
+							"console.info(\"This is info\");\r",
+							"console.warn(\"you can write warnings\");\r",
+							"console.error(\"you see errors\");"
+						],
+						"type": "text/javascript"
+					}
+				},
+				{
+					"listen": "prerequest",
+					"script": {
+						"exec": [
+							"console.log(\"halis\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n  \"id\": 0,\r\n  \"petId\": 5,\r\n  \"quantity\": 1,\r\n  \"shipDate\": \"2023-09-11T17:38:50.426Z\",\r\n  \"status\": \"placed\",\r\n  \"complete\": true\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/store/order",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"store",
+						"order"
+					]
+				},
+				"description": "This request creat an order for a user."
+			},
+			"response": []
+		},
+		{
+			"name": "Getting order details",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.value).to.eql();\r",
+							"});\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"console.log(\"Add log entries to your tests to document all steps in the console log .\");\r",
+							"console.info(\"This is info\");\r",
+							"console.warn(\"you can write warnings\");\r",
+							"console.error(\"you see errors\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/store/order/9223372036854587034",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"store",
+						"order",
+						"9223372036854587034"
+					]
+				},
+				"description": "This request get details of an order that was done before.\n\nIF a order is found then code 200 is sent, else a code 400 if its not valid or a 404 if it does not exist"
+			},
+			"response": []
+		},
+		{
+			"name": "Add some tests asserting value to environmental variable",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"To get id varibale\", function(){pm.environment.get(\"id\");});\r",
+							"pm.test(\"To get baseurl\", function(){pm.globals.get(\"baseurl\");});\r",
+							"pm.test(\"To get userurl\", function(){pm.globals.get(\"userurl\");});\r",
+							"pm.test(\"To get storeurl\", function(){pm.globals.get(\"storeurl\");});\r",
+							"console.log(\"Add log entries to your tests to document all steps in the console log .\");\r",
+							"console.info(\"This is info\");\r",
+							"console.warn(\"you can write warnings\");\r",
+							"console.error(\"you see errors\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"protocolProfileBehavior": {
+				"disableBodyPruning": true
+			},
+			"request": {
+				"method": "GET",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/pet/10",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"pet",
+						"10"
+					]
+				}
+			},
+			"response": [
+				{
+					"name": "Dokumentation",
+					"originalRequest": {
+						"method": "GET",
+						"header": [
+							{
+								"key": "Content-Type",
+								"name": "Content-Type",
+								"value": "text/plain",
+								"type": "text"
+							}
+						],
+						"body": {
+							"mode": "raw",
+							"raw": "We created two variables in the globals in the envrionments and created",
+							"options": {
+								"raw": {
+									"language": "text"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/10",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"10"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 08 Sep 2023 12:06:27 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, DELETE, PUT"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, api_key, Authorization"
+						},
+						{
+							"key": "Server",
+							"value": "Jetty(9.2.9.v20150224)"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 10,\n    \"category\": {\n        \"id\": 10,\n        \"name\": \"sample string\"\n    },\n    \"name\": \"doggie\",\n    \"photoUrls\": [\n        \"sample 1\",\n        \"sample 2\",\n        \"sample 3\"\n    ],\n    \"tags\": [\n        {\n            \"id\": 10,\n            \"name\": \"sample string\"\n        },\n        {\n            \"id\": 10,\n            \"name\": \"sample string\"\n        }\n    ],\n    \"status\": \"available\"\n}"
+				},
+				{
+					"name": "New Request",
+					"originalRequest": {
+						"method": "GET",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "https://petstore.swagger.io/v2/pet/10",
+							"protocol": "https",
+							"host": [
+								"petstore",
+								"swagger",
+								"io"
+							],
+							"path": [
+								"v2",
+								"pet",
+								"10"
+							]
+						}
+					},
+					"status": "OK",
+					"code": 200,
+					"_postman_previewlanguage": "json",
+					"header": [
+						{
+							"key": "Date",
+							"value": "Fri, 08 Sep 2023 12:16:10 GMT"
+						},
+						{
+							"key": "Content-Type",
+							"value": "application/json"
+						},
+						{
+							"key": "Transfer-Encoding",
+							"value": "chunked"
+						},
+						{
+							"key": "Connection",
+							"value": "keep-alive"
+						},
+						{
+							"key": "Access-Control-Allow-Origin",
+							"value": "*"
+						},
+						{
+							"key": "Access-Control-Allow-Methods",
+							"value": "GET, POST, DELETE, PUT"
+						},
+						{
+							"key": "Access-Control-Allow-Headers",
+							"value": "Content-Type, api_key, Authorization"
+						},
+						{
+							"key": "Server",
+							"value": "Jetty(9.2.9.v20150224)"
+						}
+					],
+					"cookie": [],
+					"body": "{\n    \"id\": 10,\n    \"category\": {\n        \"id\": 10,\n        \"name\": \"sample string\"\n    },\n    \"name\": \"doggie\",\n    \"photoUrls\": [\n        \"sample 1\",\n        \"sample 2\",\n        \"sample 3\"\n    ],\n    \"tags\": [\n        {\n            \"id\": 10,\n            \"name\": \"sample string\"\n        },\n        {\n            \"id\": 10,\n            \"name\": \"sample string\"\n        }\n    ],\n    \"status\": \"available\"\n}"
+				}
+			]
+		}
+	]
+}

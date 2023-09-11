@@ -1,0 +1,341 @@
+{
+	"info": {
+		"_postman_id": "cfe749c9-6bab-4f8b-805f-277519d60bf1",
+		"name": "User Testing",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json",
+		"_exporter_id": "29559392",
+		"_collection_link": "https://planetary-space-469074.postman.co/workspace/Swagger-Pet-Store-API-Testing~dc29dded-5734-4bea-8e8f-f857e868bd1e/collection/29559392-cfe749c9-6bab-4f8b-805f-277519d60bf1?action=share&source=collection_link&creator=29559392"
+	},
+	"item": [
+		{
+			"name": "Create User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.value).to.eql();\r",
+							"});\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"pm.test(\"getcollectionVariable\", function(){\r",
+							"pm.collectionVariables.get(\"userurl\");\r",
+							"});\r",
+							"console.log(\"Add log entries to your tests to document all steps in the console log .\");\r",
+							"console.info(\"This is info\");\r",
+							"console.warn(\"you can write warnings\");\r",
+							"console.error(\"you see errors\");\r",
+							"\r",
+							""
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"auth": {
+					"type": "noauth"
+				},
+				"method": "POST",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "\r\n  {\r\n    \"id\": 0,\r\n    \"username\": \"Hallo\",\r\n    \"firstName\": \"Halis\",\r\n    \"lastName\": \"Yilmaz\",\r\n    \"email\": \"halisyilmaz888@gmail.com\",\r\n    \"password\": \"Elf8ilys?\",\r\n    \"phone\": \"072511179\",\r\n    \"userStatus\": 0\r\n  }\r\n",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{userurl}}?id=88",
+					"host": [
+						"{{userurl}}"
+					],
+					"query": [
+						{
+							"key": "id",
+							"value": "88",
+							"description": "id nummer"
+						}
+					]
+				},
+				"description": "we create a user with this request in the database"
+			},
+			"response": []
+		},
+		{
+			"name": "Get Info About User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"pm.test(\"JSON works\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.value).to.eql();\r",
+							"});\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"console.log(\"Add log entries to your tests to document all steps in the console log .\");\r",
+							"console.info(\"This is info\");\r",
+							"console.warn(\"you can write warnings\");\r",
+							"console.error(\"you see errors\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/user/Hallo",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"user",
+						"Hallo"
+					]
+				},
+				"description": "This Get request gets info about a user\n\nIf it finds the user it returns a code 200, else a code 400 for if the username is invalid or a 404 if there is no such user."
+			},
+			"response": []
+		},
+		{
+			"name": "Update User",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.value).to.eql();\r",
+							"});\r",
+							"pm.test(\"Body matches string\", function () {\r",
+							"    pm.expect(pm.response.text()).to.include(\"0\");\r",
+							"});\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"console.log(\"Add log entries to your tests to document all steps in the console log .\");\r",
+							"console.info(\"This is info\");\r",
+							"console.warn(\"you can write warnings\");\r",
+							"console.error(\"you see errors\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "PUT",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": "{\r\n    \"id\": 0,\r\n    \"username\": \"Bravo5\",\r\n    \"firstName\": \"Handsome\",\r\n    \"lastName\": \"Jack\",\r\n    \"email\": \"Winnerwinnerchickendinner@yolo.com\",\r\n    \"password\": \"youwillneverguess\",\r\n    \"phone\": \"43925795523\",\r\n    \"userStatus\": 0\r\n}",
+					"options": {
+						"raw": {
+							"language": "json"
+						}
+					}
+				},
+				"url": {
+					"raw": "{{baseurl}}/user/Yesman",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"user",
+						"Yesman"
+					]
+				},
+				"description": "We update a users information with this PUT request."
+			},
+			"response": []
+		},
+		{
+			"name": "Create a request to login a user.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.value).to.eql();\r",
+							"});\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"console.log(\"Add log entries to your tests to document all steps in the console log .\");\r",
+							"console.info(\"This is info\");\r",
+							"console.warn(\"you can write warnings\");\r",
+							"console.error(\"you see errors\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/user/login?username=Hallo&password=Elf8ilys",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"user",
+						"login"
+					],
+					"query": [
+						{
+							"key": "username",
+							"value": "Hallo"
+						},
+						{
+							"key": "password",
+							"value": "Elf8ilys"
+						}
+					]
+				},
+				"description": "To login as a user we use this GET request."
+			},
+			"response": []
+		},
+		{
+			"name": "Create a request to logout a user",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.value).to.eql();\r",
+							"});\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});\r",
+							"console.log(\"Add log entries to your tests to document all steps in the console log .\");\r",
+							"console.info(\"This is info\");\r",
+							"console.warn(\"you can write warnings\");\r",
+							"console.error(\"you see errors\");"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "GET",
+				"header": [],
+				"url": {
+					"raw": "https://petstore.swagger.io/v2/user/logout",
+					"protocol": "https",
+					"host": [
+						"petstore",
+						"swagger",
+						"io"
+					],
+					"path": [
+						"v2",
+						"user",
+						"logout"
+					]
+				},
+				"description": "To logout as a user we use this GET request."
+			},
+			"response": []
+		},
+		{
+			"name": "Create a request to remove a user.",
+			"event": [
+				{
+					"listen": "test",
+					"script": {
+						"exec": [
+							"pm.test(\"Status code is 200\", function () {\r",
+							"    pm.response.to.have.status(200);\r",
+							"});\r",
+							"pm.test(\"Content-Type is present\", function () {\r",
+							"    pm.response.to.have.header(\"Content-Type\");\r",
+							"});\r",
+							"pm.test(\"Your test name\", function () {\r",
+							"    var jsonData = pm.response.json();\r",
+							"    pm.expect(jsonData.value).to.eql();\r",
+							"});\r",
+							"pm.test(\"Response time is less than 1000ms\", function () {\r",
+							"    pm.expect(pm.response.responseTime).to.be.below(1000);\r",
+							"});"
+						],
+						"type": "text/javascript"
+					}
+				}
+			],
+			"request": {
+				"method": "DELETE",
+				"header": [],
+				"body": {
+					"mode": "raw",
+					"raw": ""
+				},
+				"url": {
+					"raw": "{{baseurl}}/user/Hallo",
+					"host": [
+						"{{baseurl}}"
+					],
+					"path": [
+						"user",
+						"Hallo"
+					]
+				},
+				"description": "We use this DELETE request to delete a user in the database.\n\nIf User Deletion is succesful then a code 200 is returned, else code 400 or 404 will be returned."
+			},
+			"response": []
+		}
+	]
+}
